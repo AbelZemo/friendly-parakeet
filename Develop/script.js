@@ -66,25 +66,26 @@ function generatePassword() {
     // when a user selected at least one character input
     if (lowerCase || upperCase || numbers || specailCharacters) {
 
-      for(let i=0; i < lengthOfPassword; i++) {
-          if(lowerCase) {
-            generatedPassword += generateLowercase();
-          }
-          if(upperCase) {
-            generatedPassword += generateUppercase();
-          }
-          if(numbers) {
-            generatedPassword += generateRandomNumber();
-          }
-          if(specailCharacters) {
-            generatedPassword += generateRandomSymbol();
-          }
+      for (let i = 0; i < lengthOfPassword; i++) {
+        if (lowerCase) {
+          generatedPassword += generateLowercase();
+        }
+        if (upperCase) {
+          generatedPassword += generateUppercase();
+        }
+        if (numbers) {
+          generatedPassword += generateRandomNumber();
+        }
+        if (specailCharacters) {
+          generatedPassword += generateRandomSymbol();
+        }
       }
-
+      // after concatinating each charaset to generatedPassword varaiable we should slice upto the length of the password
       let finalPassword = generatedPassword.slice(0, lengthOfPassword);
+      // finaly shuffle the outcome
+      var shuffled = finalPassword.split('').sort(function () { return 0.5 - Math.random() }).join('');
 
-      var shuffled = finalPassword.split('').sort(function(){return 0.5-Math.random()}).join('');
-
+      // finally return the outcome and display to the user
       return shuffled;
 
     }
